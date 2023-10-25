@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Thực Đơn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("https://media.istockphoto.com/id/500643854/vi/vec-to/th%E1%BB%B1c-%C4%91%C6%A1n-th%E1%BB%B1c-ph%E1%BA%A9m-nh%C3%A0-h%C3%A0ng-thi%E1%BA%BFt-k%E1%BA%BF-c%E1%BB%95-%C4%91i%E1%BB%83n-v%E1%BB%9Bi-chalkboard-background-v.jpg?s=1024x1024&w=is&k=20&c=DU52ffNaLdCl6yOAll_pNW1WQqucFcV0-_wPxScT8LM=");
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+    nav {
+      background-color: #444;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 10px;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .restaurant-layout {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .menu{
+      display: grid;
+      text-align: center;
+      justify-content: center;
+      width: calc(33.33% - 20px);
+      background-color: #f0f0f0;
+    }
+
+    .menu p{
+      margin: 10px;
+    }
+
+    .menu-type {
+      background-color: #F0F0F0;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #DDD;
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <h1>Thực Đơn Nhà Hàng KASEUN</h1>
+</header>
+<nav>
+  <a href="/home">Trang Chủ</a>
+  <a href="/menu">Thực Đơn</a>
+  <a href="/book/addTable">Đặt Bàn</a>
+  <a href="/information">Liên Hệ</a>
+</nav>
+<div class="container">
+  <div class="restaurant-layout">
+    <div th:each="type : ${distinctTypes}">
+      <h2 th:text="${type}"></h2>
+      <div class="menu-type">
+        <div th:each="menu : ${menu}">
+          <div th:if="${menu.type == type}" class="menu">
+            <div>
+              <img th:src="${menu.images}">
+            </div>
+            <div>
+              <p th:text="${menu.name}"></p>
+            </div>
+            <div>
+              <p th:text="${menu.price}"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+<footer>
+  <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
+</footer>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hóa Đơn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .invoice {
+      width: 50%;
+      margin: 20px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      border-radius: 5px;
+    }
+
+
+    .customer-info {
+      flex: 2;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+    .back{
+      padding: 10px 0;
+    }
+    .back button{
+      width: 90px;
+      height: 30px;
+      margin-right: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Chi Tiết Hóa Đơn</h1>
+</header>
+<div class="invoice">
+  <div class="customer-info">
+    <h2>Thông Tin Khách Hàng</h2>
+    <div th:object="${detail}">
+      <p>Tên khách hàng: <span th:text="*{name}"></span></p>
+      <p>Số Điện Thoại: <span th:text="*{phoneNumber}"></span></p>
+      <p>Bàn số: <span th:text="*{numberTable}"></span></p>
+      <p>Thực đơn gồm: </p>
+      <ul>
+<!--        <li th:each="product : *{products}">-->
+<!--          <span th:text="${product.name}"></span> - <span th:text="${product.price}"></span> VNĐ-->
+<!--        </li>-->
+      </ul>
+      <p>Tổng hóa đơn: <span th:text="*{total}"></span> VNĐ</p>
+    </div>
+    <div class="back">
+      <a href="/customer/getKH">
+        <button>Trở lại</button>
+      </a>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+</body>
+</html>

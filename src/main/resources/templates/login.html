@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<h1>Đăng Nhập</h1>
+<form th:action="@{/checklogin}" method="post" class="login-container">
+    <label for="userName">Tên đăng nhập</label>
+    <input type="text" id="userName" name="userName" autofocus="autofocus" /><br />
+    <label for="password">Mật khẩu</label>
+    <input type="password" id="password" name="password" /><br />
+    <div th:if="${error}" class="error-message">Tên đăng nhập hoặc mật khẩu không đúng.</div>
+    <div class="res">
+        <button type="submit" class="login-button">Đăng nhập</button>
+    </div>
+</form>
+</body>
+</html>

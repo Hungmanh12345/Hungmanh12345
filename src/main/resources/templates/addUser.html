@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm Nhân Viên</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .add-employee {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+
+    .add-employee h2 {
+      margin: 0;
+    }
+
+    .form-group {
+      margin: 10px 0;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .add-employee button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Thêm Nhân Viên</h1>
+</header>
+<div class="container">
+  <div class="add-employee">
+    <h2>Thông Tin Nhân Viên Mới</h2>
+    <form th:action="@{/user/add}" th:object="${user}" method="post">
+      <div class="form-group">
+        <label for="fullName">Họ và Tên</label>
+        <input th:field="*{fullName}" type="text" id="fullName" name="fullName" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Tuổi</label>
+        <input th:field="*{age}" type="text" id="age" name="age" required>
+      </div>
+      <div class="form-group">
+        <label for="sex">giới tính</label>
+        <input th:field="*{sex}" type="text" id="sex" name="sex" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Số điện thoại</label>
+        <input th:field="*{phone}" type="text" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="birth">Ngày sinh</label>
+        <input th:field="*{birth}" type="text" id="birth" name="bỉth" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input th:field="*{address}" type="text" id="address" name="address" required>
+      </div>
+
+      <button type="submit">Thêm Nhân Viên</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

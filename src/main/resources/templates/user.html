@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Nhân Viên</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+        background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+    nav {
+        background-color: #444;
+        text-align: center;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+        margin: 10px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .employee-list {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+
+    .employee-list h2 {
+      margin-bottom: 10px;
+    }
+
+    .employee-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .employee-table th, .employee-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .employee-table th {
+      background-color: #444;
+      color: #fff;
+    }
+
+    .employee-options {
+        padding: 10px 0;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        width: 170px;
+        background-color: #444;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .employee-options a {
+        text-decoration: none;
+        border-radius: 2px;
+        color: #f0f0f0;
+    }
+    .edit-e a{
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Quản Lý Nhân Viên</h1>
+</header>
+<nav>
+    <a href="/admin">Trang Chủ</a>
+    <a href="/tables/getTable">Sơ Đồ</a>
+    <a href="/menuAd">Thực Đơn</a>
+    <a href="/user/users">Nhân Viên</a>
+    <a href="/customer/getKH">Khách Hàng</a>
+    <a href="/book/getBook">Xác Nhận Đơn</a>
+    <a href="/RevenueStatistics">Thống kê doanh thu</a>
+</nav>
+<div class="container">
+  <div class="employee-list">
+    <h2>Danh Sách Nhân Viên</h2>
+    <table class="employee-table">
+      <thead>
+      <tr>
+        <th>Họ tên</th>
+        <th>Giới tính</th>
+        <th>Birth</th>
+        <th>Tuổi</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Thao tác</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="user: ${user}">
+          <td th:text="${user.fullName}"></td>
+          <td th:text="${user.sex}"></td>
+          <td th:text="${user.birth}"></td>
+          <td th:text="${user.age}"></td>
+          <td th:text="${user.phone}"></td>
+          <td th:text="${user.address}"></td>
+          <td class="edit-e">
+            <a th:href="@{/user/update/{id}(id=${user.id})}">Sửa</a>
+              <a th:href="@{/user/delete/{id}(id=${user.id})}">Xóa</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="employee-options">
+      <a href="/user/addUser">Thêm Nhân Viên Mới</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

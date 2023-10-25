@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thống Kê Doanh Thu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      display: flex;
+    }
+
+    .chart {
+      flex: 1;
+      text-align: center;
+    }
+
+    .chart img {
+      max-width: 90%;
+      height: auto;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+
+    nav {
+      background-color: #444;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 10px;
+    }
+    .revenue{
+      padding-top: 20px;
+    }
+    .revenue p{
+      font-size: 20px;
+    }
+    .result{
+      margin-right: 30px;
+    }
+
+    .visible{
+      display: block;
+    }
+
+    .hidden{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <header>
+    <h1>Thống Kê Doanh Thu</h1>
+  </header>
+  <nav>
+    <a href="/admin">Trang Chủ</a>
+    <a href="/tables/getTable">Sơ Đồ</a>
+    <a href="/menuAd">Thực Đơn</a>
+    <a href="/user/users">Nhân Viên</a>
+    <a href="/customer/getKH">Khách Hàng</a>
+    <a href="/book/getBook">Xác Nhận Đơn</a>
+    <a href="/RevenueStatistics">Thống kê doanh thu</a>
+  </nav>
+</div>
+<div class="container">
+  <div class="chart">
+    <img src="https://www.phatdat.com.vn/wp-content/uploads/2020/10/doanh-thu-va-loi-nhuan-pdr.png" alt="Biểu đồ Doanh Thu">
+  </div>
+  <div class="result">
+    <h1>Kết quả thống kê doanh thu</h1>
+    <form th:action="@{/customer/revenue}" method="get">
+      <label for="startDate">Từ ngày:</label>
+      <input type="date" id="startDate" name="startDate" required th:value="${startDate}">
+      <label for="endDate">Đến ngày:</label>
+      <input type="date" id="endDate" name="endDate" required th:value="${endDate}">
+      <button type="submit">Thống kê</button>
+    </form>
+    <div class="revenue"  th:classappend="${revenue ne null ? 'visible' : 'hidden'}">
+      <p th:if="${revenue != null}">Tổng doanh thu: <span th:text="${revenue}" ></span> VNĐ</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

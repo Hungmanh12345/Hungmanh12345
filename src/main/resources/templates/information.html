@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên Hệ Nhà Hàng KASEUN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .contact-info {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+
+    .contact-form {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin: 10px 0;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    nav {
+      background-color: #444;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 10px;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Liên Hệ Nhà Hàng KASEUN</h1>
+</header>
+<form>
+  <nav>
+    <a href="/home">Trang Chủ</a>
+    <a href="/menu">Thực Đơn</a>
+    <a href="/book/addTable">Đặt Bàn</a>
+    <a href="/information">Liên Hệ</a>
+  </nav>
+</form>
+<div class="contact-info">
+  <h2>Thông Tin Liên Hệ</h2>
+  <p>Địa chỉ: 84 Triều Khúc, Thanh Xuân, Hà Nội</p>
+  <p>Điện thoại: 0913566383</p>
+  <p>Email: restaurantKaseun@nhahangabc.com</p>
+</div>
+<div class="contact-form">
+  <h2>Gửi Tin Nhắn</h2>
+  <form action="process_contact.php" method="post">
+    <div class="form-group">
+      <label for="name">Họ và Tên:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Tin Nhắn:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+    </div>
+    <input type="submit" value="Gửi">
+  </form>
+</div>
+</body>
+<footer>
+  <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
+</footer>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đặt Bàn Nhà Hàng KASEUN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .reservation-form {
+      background-color: #cbf5b6;
+      padding: 20px;
+      border-radius: 5px;
+      width: 800px;
+    }
+
+    .form-group {
+      margin: 10px 0;
+    }
+
+    .form-info{
+      height: 100px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="time"] {
+      width: calc(100% - 9px);
+      padding: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    nav {
+      background-color: #444;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 10px;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+    .table{
+      display: flex;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <h1>Đặt Bàn Nhà Hàng KASEUN</h1>
+</header>
+  <form>
+    <nav>
+      <a href="/home">Trang Chủ</a>
+      <a href="/menu">Thực Đơn</a>
+      <a href="/book/addTable">Đặt Bàn</a>
+      <a href="/information">Liên Hệ</a>
+    </nav>
+  </form>
+  <div class="table">
+    <div class="reservation-form">
+      <h2>Đặt Bàn</h2>
+      <form th:action="@{/book/add}" th:object="${bookTable}" method="post">
+        <div class="form-group">
+          <label for="name">Họ và Tên:</label>
+          <input th:field="*{bookName}" type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Số điện thoại:</label>
+          <input th:field="*{phone}" type="text" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Ngày:</label>
+          <input th:field="*{date}" type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Thời gian:</label>
+          <input th:field="*{time}" type="time" id="time" name="time" required>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Số lượng khách:</label>
+          <input th:field="*{quantity}" type="text" id="quantity" name="quantity" required>
+        </div>
+        <div class="form-group">
+          <label for="information">Thông tin thêm:</label>
+          <textarea class="form-info" th:field="*{information}" type="text" id="information" name="information"></textarea>
+        </div>
+        <input type="submit" value="Đặt Bàn">
+      </form>
+    </div>
+    <div class="reservation-form">
+      <h2>Đặt bàn qua điện thoại</h2>
+      <p>
+        <img src="https://chumrestaurant.com/wp-content/uploads/2021/11/photo-hotline-02.png">
+      </p>
+      <p> * Bàn ghế của chúng tôi có thể chứa đến 20 khách. Vui lòng cân nhắc khi lên kế hoạch trước cho nhóm.</p>
+      <p> * Đối với việc đặt chỗ hơn 20 khách, vui lòng liên hệ với chúng tôi. Chúng tôi sẽ tư vấn về kế hoạch của bạn.</p>
+      <h3>Nhà hàng KASEUN</h3>
+      <p>Địa chỉ: 84 Triều Khúc, Thanh Xuân, Hà Nội</p>
+      <p>Điện thoại: 0913566383</p>
+      <h4>Giờ mở cửa:</h4>
+      <p>11h30 AM - 14h00 PM</p>
+      <p>17h30 PM - 22h00 PM</p>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
+  </footer>
+</body>
+</html>

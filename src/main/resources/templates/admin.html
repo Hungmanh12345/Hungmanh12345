@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản Lý Nhà Hàng</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logout{
+      margin-left: auto;
+      padding: 10px;
+      text-align: center;
+    }
+    .logout button{
+      font-size: 14px;
+      width: 100px;
+      height: 40px;
+    }
+
+    h1 {
+      margin-left: 60px;
+      width: 100%;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 10px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+    .section a{
+      font-size: 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <h1>Quản Lý Nhà Hàng</h1>
+  <form class="logout" th:action="@{/logout}" method="get">
+    <button type="submit">Đăng xuất</button>
+  </form>
+</header>
+<nav>
+  <a href="/admin">Trang Chủ</a>
+  <a href="/tables/getTable">Sơ Đồ</a>
+  <a href="/menuAd">Thực Đơn</a>
+  <a href="/user/users">Nhân Viên</a>
+  <a href="/customer/getKH">Khách Hàng</a>
+  <a href="/book/getBook">Xác Nhận Đơn</a>
+  <a href="/RevenueStatistics">Thống kê doanh thu</a>
+</nav>
+<div class="container">
+  <div class="section">
+    <a href="/tables/getTable">Sơ Đồ Bàn Ăn</a>
+  </div>
+  <div class="section">
+    <a href="/menuAd">Thực Đơn</a>
+  </div>
+  <div class="section">
+    <a href="/user/users">Nhân Viên</a>
+  </div>
+  <div class="section">
+    <a href="/customer/getKH">Khách Hàng</a>
+  </div>
+  <div class="section">
+    <a href="/book/getBook">Xác thực đơn</a>
+  </div>
+  <div class="section">
+    <a href="/RevenueStatistics">Thống kê doanh thu</a>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2023 Quản Lý Nhà Hàng. Tất cả các quyền được bảo lưu.</p>
+</footer>
+</body>
+</html>

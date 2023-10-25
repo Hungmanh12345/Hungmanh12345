@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Bàn Nhà Hàng KASEUN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #444;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            margin: 10px;
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .info-home{
+            width: 100%;
+            padding-left: 12px;
+        }
+        .story{
+            background-color: #cbf5b6;
+        }
+
+        .story-header{
+            text-align: center;
+            padding-top: 10px;
+            font-family: "Cambria";
+            font-size: 20px;
+        }
+        .story-content{
+            display: flex;
+            padding: 10px;
+        }
+        .story-content-img img{
+            width: 100%;
+            padding-left: 80px;
+
+        }
+        .story-content-text{
+            width: 100%;
+            font-family: Cambria;
+            padding-left: 100px;
+            padding-right: 80px;
+            line-height: 30px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Nhà Hàng KASEUN</h1>
+    <p>Thực đơn đa dạng với những món ăn ngon và dịch vụ tốt.</p>
+</header>
+<form>
+    <nav>
+        <a href="/home">Trang Chủ</a>
+        <a href="/menu">Thực Đơn</a>
+        <a href="/book/addTable">Đặt Bàn</a>
+        <a href="/information">Liên Hệ</a>
+    </nav>
+</form>
+<div class="container">
+    <div class="content">
+        <div>
+            <h2>Chào mừng đến với Nhà Hàng KASEUN</h2>
+            <div class="img-home">
+                <img src="https://maybanhang.net/wp-content/uploads/2015/11/blog4-3.png" alt="imgA">
+            </div>
+        </div>
+        <div class="info-home">
+            <h2>Thông tin nhà hàng</h2>
+            <p>Địa chỉ: 84 Triều khúc, Thanh Xuân, Hà Nội</p>
+            <p>Điện thoại: 0986543217</p>
+            <p>Email: RestaurantKaseun@gmail.com</p>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0366055978177!2d-122.08374568427393!3d37.421999279821825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba9ff56283fd%3A0x45e8a1bf7710f764!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1663937770674!5m2!1sen!2sus"
+                        width="830"
+                        height="346"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="story">
+        <div class="story-header">
+            <h2>Tiểu sử nhà hàng KASEUN</h2>
+        </div>
+        <div class="story-content">
+            <div class="story-content-img">
+                <img src="https://noithatkendesign.vn/storage/app/media/uploaded-files/thiet-ke-nha-hang-phong-cach-chau-au-1.png" alt="imgRes">
+            </div>
+            <p class="story-content-text">
+                Dựa trên lịch sử ẩm thực thấm nhuần nét văn hóa truyền thống, Nhà hàng KASEUN với hơn 20 năm hoạt động, đã và đang tạo dựng nên uy tín và cảm tình của thực khách yêu mến các món ăn nổi danh tại Hà Nội. Nhà hàng KASEUN luôn ưu tiên trong việc lan tỏa hương vị đích thực, mang đến không gian thưởng thức ẩm thực truyền thống đồng thời sáng tạo tinh hoa trong ẩm thực hiện đại để mang đến trải nghiệm độc đáo.
+                Nhà hàng KASEUN là sự kết hợp hoàn hảo giữa không gian sang trọng mà ấm áp, cùng những món ăn do các đầu bếp giàu kinh nghiệm tạo nên, đậm đà trong hương vị, tinh tế trong cách chế biến, khéo léo trong cách trình bày, mang những đặc trưng riêng rất riêng của ẩm thực nơi đây.
+                Không khó để khám phá ẩm thực, nhưng sẽ còn dễ dàng và an tâm hơn nữa, khi quý khách ghé đến Nhà Hàng KASEUN ở 84 Triều khúc, Thanh Xuân, Hà Nội của chúng tôi. Nhân viên Nhà hàng KASEUN luôn sẵn lòng phục vụ mỗi vị khách như người bạn thân thiết!
+            </p>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
+</footer>
+</body>
+</html>

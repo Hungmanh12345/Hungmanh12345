@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bàn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #444;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            margin: 10px;
+        }
+
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .restaurant-layout {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .table{
+            display: grid;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .table p{
+            margin: 10px;
+        }
+
+        .add{
+            margin-bottom: 8px;
+            display: flex;
+            text-align: center;
+        }
+        .addUse{
+            margin-bottom: 8px;
+            display: flex;
+        }
+        .add-tt button{
+            margin-left: 3px;
+        }
+        /* Bàn trống */
+        .empty {
+            background-color: #00ff00;
+            width: calc(25% - 20px);
+            margin-bottom: 20px;
+        }
+
+        /* Bàn đã đặt trước */
+        .booked {
+            background-color: #ffff00;
+            width: calc(25% - 20px);
+            margin-bottom: 20px;
+        }
+
+        /* Bàn đang sử dụng */
+        .occupied {
+            background-color: #ff0000;
+            width: calc(25% - 20px);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Sơ đồ bàn ăn</h1>
+</header>
+<nav>
+    <a href="/admin">Trang Chủ</a>
+    <a href="/tables/getTable">Sơ Đồ</a>
+    <a href="/menuAd">Thực Đơn</a>
+    <a href="/user/users">Nhân Viên</a>
+    <a href="/customer/getKH">Khách Hàng</a>
+    <a href="/book/getBook">Xác Nhận Đơn</a>
+    <a href="/RevenueStatistics">Thống kê doanh thu</a>
+</nav>
+<div class="container">
+    <div class="restaurant-layout">
+        <div th:each="table : ${table}" th:class="${table.action}">
+                <div class="table">
+                    <p>Bàn số: <span th:text="${table.code}"></span></p>
+                    <p>Số chỗ: <span th:text="${table.numberSeats}"></span></p>
+                    <p>
+                    <span th:switch="${table.action}">
+                        <span th:case="'empty'">Trống</span>
+                        <span th:case="'booked'">Đã đặt trước</span>
+                        <span th:case="'occupied'">Đang sử dụng</span>
+                    </span>
+                    </p>
+                    <div class="addUse" th:if="${table.action eq 'empty'}">
+                        <form th:action="@{/tables/use/{id}(id=${table.id})}" method="post">
+                            <button type="submit">Sử dụng</button>
+                        </form>
+                        <form th:action="@{/tables/booked/{id}(id=${table.id})}" method="post">
+                            <button type="submit">Đặt</button>
+                        </form>
+                    </div>
+                    <div class="add" th:if="${table.action eq 'booked'}">
+                        <form th:action="@{/tables/used/{id}(id=${table.id})}" method="post">
+                            <button type="submit">Sử dụng</button>
+                        </form>
+                        <form th:action="@{/tables/deleted/{code}(code=${table.code})}" method="post">
+                            <button type="submit">Hủy</button>
+                        </form>
+                    </div>
+                    <div class="add-tt" th:if="${table.action eq 'occupied'}">
+                        <form th:action="@{/tables/payCode/{code}(code=${table.code})}" method="post">
+                            <button type="submit">Thanh toán</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

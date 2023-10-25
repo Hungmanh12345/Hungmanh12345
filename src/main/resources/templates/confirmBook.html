@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thông Báo Đặt Bàn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("https://i.pinimg.com/originals/8e/d4/ae/8ed4ae5f7aa646bc06bfec9ff44c932e.jpg");
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    nav {
+      background-color: #444;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 10px;
+    }
+
+    .booking-actions {
+      text-align: center;
+    }
+
+    .confirm-button, .cancel-button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+    .table{
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table th{
+      background-color: #444;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Thông Báo Đặt Bàn</h1>
+</header>
+<nav>
+  <a href="/admin">Trang Chủ</a>
+  <a href="/tables/getTable">Sơ Đồ</a>
+  <a href="/menuAd">Thực Đơn</a>
+  <a href="/user/users">Nhân Viên</a>
+  <a href="/customer/getKH">Khách Hàng</a>
+  <a href="/book/getBook">Xác Nhận Đơn</a>
+  <a href="/RevenueStatistics">Thống kê doanh thu</a>
+</nav>
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Thông Tin Khách Hàng</th>
+      <th>Thao Tác</th>
+    </tr>
+    </thead>
+    <tbody th:each="confirm : ${getBook}">
+      <tr th:if="${confirm.action eq 'Chưa duyệt'}">
+        <td>
+          <p>Tên Khách Hàng: <span th:text="${confirm.bookName}"></span></p>
+          <p>Số Điện Thoại: <span th:text="${confirm.phone}"></span></p>
+          <p>Ngày Đặt: <span th:text="${confirm.date}"></span></p>
+          <p>Thời Gian: <span th:text="${confirm.time}"></span></p>
+          <p>Số lượng khách: <span th:text="${confirm.quantity}"></span></p>
+          <p>Thông tin thêm: <span th:text="${confirm.information}"></span></p>
+          <p th:if="${confirm.action eq 'Chưa duyệt'}">Trạng thái: <span th:text="${confirm.action}"></span></p>
+        </td>
+        <td class="booking-actions">
+          <form th:action="@{/book/confirm/{id}(id=${confirm.id})}" method="post">
+            <button type="submit" class="confirm-button">Xác Nhận</button>
+          </form>
+          <form th:action="@{/book/delete/{id}(id=${confirm.id})}" method="post">
+            <button type="submit" class="cancel-button">Hủy</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
