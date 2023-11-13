@@ -35,7 +35,7 @@
 
 
     .container {
-      max-width: 1000px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -72,25 +72,43 @@
       padding: 5px 10px;
       margin: 5px;
     }
+    .bill{
+
+    }
 
     .addUse-g{
       border: 1px solid #333333;
       background-color: #f0f0f0;
-      text-align: center;
       border-radius: 5px;
-      width: 90px;
+      width: 80px;
       padding: 2px;
     }
     .addUse-g a{
       text-decoration: none;
       color: #333333;
     }
+    .back{
+      padding-top: 20px;
+    }
+    .back a{
+      background-color: #F0F0F0;
+      text-decoration: none;
+      font-size: 20px;
+      border-radius: 5px;
+      border: 1px solid #333333;
+      padding: 5px;
+      color: #333333;
+    }
+    .tt{
+      display: flex;
+      align-items: flex-end;
+    }
   </style>
 </head>
 <body>
 <header>
   <h1>Quản Lý Nhà Hàng</h1>
-  <h3>Khách Hàng</h3>
+  <h3>Danh sách khách hàng đã đặt</h3>
 </header>
 <nav>
   <a href="/admin">Trang Chủ</a>
@@ -106,33 +124,38 @@
     <h2>Danh Sách Khách Hàng</h2>
     <table class="customer-table">
       <thead>
-        <tr>
-          <th>Ngày</th>
-          <th>Họ tên</th>
-          <th>Số điện thoại</th>
-          <th>Bàn số</th>
-          <th>Trạng thái</th>
-          <th>Thao Tác</th>
-        </tr>
+      <tr>
+        <th>Họ tên</th>
+        <th>Số điện thoại</th>
+        <th>Ngày</th>
+        <th>Thời gian</th>
+        <th>Số lượng khách</th>
+        <th>Thông tin thêm</th>
+        <th>Thao Tác</th>
+      </tr>
       </thead>
       <tbody>
-        <tr th:each="customer: ${customer}">
-          <td th:text="${#dates.format(customer.createdDate, 'dd-MM-yyyy')}"></td>
-          <td th:text="${customer.name}"></td>
-          <td th:text="${customer.phoneNumber}"></td>
-          <td th:text="${customer.numberTable}"></td>
-          <td th:text="${customer.action}"></td>
-          <td class="bill" >
-            <form class="addUse-g" th:if="${customer.action eq 'Chưa thanh toán'}">
-              <a th:href="@{/customer/payment/{id}(id=${customer.id})}">Thanh toán</a>
-            </form>
-            <form class="addUse-g" th:if="${customer.action eq 'Đã thanh toán'}" >
-              <a th:href="@{/customer/detail/{id}(id=${customer.id})}">Chi tiết</a>
-            </form>
-          </td>
-        </tr>
+      <tr th:each="getBook: ${show}" th:if="${getBook.action eq 'Đã duyệt'}">
+        <td th:text="${getBook.bookName}"></td>
+        <td th:text="${getBook.phone}"></td>
+        <td th:text="${getBook.date}"></td>
+        <td th:text="${getBook.time}"></td>
+        <td th:text="${getBook.quantity}"></td>
+        <td th:text="${getBook.information}"></td>
+        <td class="tt">
+          <form class="addUse-g"}>
+            <a th:href="@{/book/bookId/{id}(id=${getBook.id})}">Đặt bàn</a>
+          </form>
+          <form class="addUse-g"}>
+            <a href="@{/customer/payment/{id}(id=${customer.id})}">Hủy đặt</a>
+          </form>
+        </td>
+      </tr>
       </tbody>
     </table>
+    <div class="back">
+      <a th:href="@{/book/getBook}">Trở lại</a>
+    </div>
   </div>
 </div>
 </body>

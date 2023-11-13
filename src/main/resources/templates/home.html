@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đặt Bàn Nhà Hàng KASEUN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,26 +12,25 @@
             padding: 0;
         }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
         nav {
-            background-color: #444;
+            background-color: #64a956;
             text-align: center;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         nav a {
+            font-family: "Philosopher", sans-serif;
             text-decoration: none;
             color: #fff;
-            margin: 10px;
+            margin: 20px;
+        }
+
+        nav img{
+            width: 90px;
+            height: 90px;
         }
 
         .container {
@@ -41,7 +41,7 @@
             background-color: #fff;
             padding: 20px;
             border-radius: 5px;
-            display: flex;
+            background-image: url(https://chumrestaurant.com/wp-content/uploads/2021/11/photo-background-022.jpg)
         }
 
         footer {
@@ -51,9 +51,24 @@
             padding: 10px;
         }
         .info-home{
-            width: 100%;
+            width: 99.2%;
             padding-left: 12px;
+            display: flex;
+            background-image: url(https://chumrestaurant.com/wp-content/uploads/2021/11/photo-background-03.jpg);
+            color: #F0F0F0;
+            justify-content: space-between;
         }
+        .info-home-in4{
+            padding: 0 40px;
+        }
+        .map{
+            padding-right: 20px;
+        }
+
+        .map iframe{
+            padding: 10px 20px;
+        }
+
         .story{
             background-color: #cbf5b6;
         }
@@ -81,43 +96,79 @@
             line-height: 30px;
             font-size: 18px;
         }
+        .img-home{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .img-home img{
+            image-rendering: pixelated;
+            text-align: center;
+            width: 33%;
+        }
+
+        .info-home-web{
+            padding-left: 120px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-home-img img{
+            padding-top: 60px;
+            width: 140px;
+            height: 140px;
+        }
+        .info-home-icon{
+            display: grid;
+            padding-top: 20px;
+        }
+        .info-home-icon i{
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .search-button {
+            background-color: #64a956;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Ẩn ô nhập ban đầu */
+        .search-input {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
-<header>
-    <h1>Nhà Hàng KASEUN</h1>
-    <p>Thực đơn đa dạng với những món ăn ngon và dịch vụ tốt.</p>
-</header>
 <form>
     <nav>
-        <a href="/home">Trang Chủ</a>
-        <a href="/menu">Thực Đơn</a>
-        <a href="/book/addTable">Đặt Bàn</a>
-        <a href="/information">Liên Hệ</a>
+        <img th:src="@{/image/logo.jpg}" alt="logo">
+        <div class="header">
+            <a href="/home">Trang Chủ</a>
+            <a href="/menu">Thực Đơn</a>
+            <a href="/book/addTable">Đặt Bàn</a>
+            <a href="/information">Liên Hệ</a>
+            <form action="/search" method="get">
+                <button type="button" class="search-button" id="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+                <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input" id="search-input">
+            </form>
+        </div>
     </nav>
 </form>
 <div class="container">
     <div class="content">
-        <div>
+        <div class="story-header">
             <h2>Chào mừng đến với Nhà Hàng KASEUN</h2>
-            <div class="img-home">
-                <img src="https://maybanhang.net/wp-content/uploads/2015/11/blog4-3.png" alt="imgA">
-            </div>
         </div>
-        <div class="info-home">
-            <h2>Thông tin nhà hàng</h2>
-            <p>Địa chỉ: 84 Triều khúc, Thanh Xuân, Hà Nội</p>
-            <p>Điện thoại: 0986543217</p>
-            <p>Email: RestaurantKaseun@gmail.com</p>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0366055978177!2d-122.08374568427393!3d37.421999279821825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba9ff56283fd%3A0x45e8a1bf7710f764!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1663937770674!5m2!1sen!2sus"
-                        width="830"
-                        height="346"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                ></iframe>
-            </div>
+        <div class="img-home">
+                <img src="https://maybanhang.net/wp-content/uploads/2015/11/blog4-3.png" alt="imgA">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAIuELuJCRTXgMQVYk6b0D7Y7tSTu5F5g-qA&usqp=CAU" alt="imgB">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQltGr3GRQoqfFHsTQeWbNoUvGem75kqh8uBA&usqp=CAU" alt="imgC">
         </div>
     </div>
     <div class="story">
@@ -135,9 +186,64 @@
             </p>
         </div>
     </div>
+    <div class="info-home">
+        <div class="info-home-web">
+            <div class="info-home-img">
+                <img th:src="@{/image/logo.jpg}" alt="logo">
+            </div>
+            <div class="info-home-icon">
+                <i class="fa-brands fa-facebook"> Facebook</i>
+                <i class="fa-brands fa-instagram">Instagram</i>
+                <i class="fa-brands fa-youtube"> Youtube</i>
+            </div>
+        </div>
+        <div class="info-home-in4">
+            <h2>Thông tin nhà hàng</h2>
+            <p>Địa chỉ: 84 Triều khúc, Thanh Xuân, Hà Nội</p>
+            <p>Điện thoại: 0986543217</p>
+            <p>Email: RestaurantKaseun@gmail.com</p>
+        </div>
+        <div class="map">
+            <h2>Bản đồ</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0366055978177!2d-122.08374568427393!3d37.421999279821825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba9ff56283fd%3A0x45e8a1bf7710f764!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1663937770674!5m2!1sen!2sus"
+                    width="400"
+                    height="300"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+            ></iframe>
+        </div>
+    </div>
 </div>
 <footer>
     <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
 </footer>
+
+
+
+
+
+
+<script>
+    // JavaScript để hiển thị ô nhập khi di chuột vào biểu tượng
+    const searchButton = document.getElementById("search-button");
+    const searchInput = document.getElementById("search-input");
+
+    searchButton.addEventListener("mouseover", function () {
+        searchInput.style.display = "block";
+    });
+
+    searchButton.addEventListener("mouseout", function () {
+        searchInput.style.display = "none";
+    });
+
+    searchInput.addEventListener("mouseover", function () {
+        searchInput.style.display = "block";
+    });
+
+    searchInput.addEventListener("mouseout", function () {
+        searchInput.style.display = "none";
+    });
+</script>
 </body>
 </html>

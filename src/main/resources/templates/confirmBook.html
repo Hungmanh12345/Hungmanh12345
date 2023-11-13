@@ -68,11 +68,24 @@
       color: #fff;
       text-align: center;
     }
+    .list-customer{
+      padding-top: 20px;
+    }
+    .list-customer a{
+      color: #333333;
+      background-color: #F0F0F0;
+      text-decoration: none;
+      font-size: 20px;
+      border-radius: 5px;
+      border: 1px solid #333333;
+      padding: 5px;
+    }
   </style>
 </head>
 <body>
 <header>
-  <h1>Thông Báo Đặt Bàn</h1>
+  <h1>Quản lý nhà hàng</h1>
+  <h3>Thông Báo Đặt Bàn</h3>
 </header>
 <nav>
   <a href="/admin">Trang Chủ</a>
@@ -113,6 +126,9 @@
       </tr>
     </tbody>
   </table>
+  <div class="list-customer">
+    <a th:href="@{/book/list_book_customer}">Danh sách khách hàng đã đặt</a>
+  </div>
 </div>
 </body>
 </html>

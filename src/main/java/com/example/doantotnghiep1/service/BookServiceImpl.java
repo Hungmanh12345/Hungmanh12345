@@ -26,11 +26,7 @@ public class BookServiceImpl implements BookService{
         );
         existBook
                 .bookName(book.getBookName())
-                .phone(book.getPhone())
-                .quantity(book.getQuantity())
-                .date(book.getDate())
-                .time(book.getTime())
-                .information(book.getInformation());
+                .phone(book.getPhone());
         return bookRepository.save(existBook);
     }
 

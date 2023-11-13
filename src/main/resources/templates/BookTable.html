@@ -11,19 +11,8 @@
       padding: 0;
     }
 
-    header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-    }
-
-    h1 {
-      margin: 0;
-    }
-
     .reservation-form {
-      background-color: #cbf5b6;
+      background-color: #fffae7;
       padding: 20px;
       border-radius: 5px;
       width: 800px;
@@ -52,21 +41,31 @@
     }
 
     input[type="submit"] {
-      background-color: #333;
+      background-color: #39b54a;
       color: #fff;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
     }
     nav {
-      background-color: #444;
+      background-color: #64a956;
       text-align: center;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav img{
+      width: 90px;
+      height: 90px;
     }
 
     nav a {
+      font-family: "Philosopher", sans-serif;
       text-decoration: none;
       color: #fff;
-      margin: 10px;
+      margin: 20px;
     }
     footer {
       background-color: #333;
@@ -78,20 +77,29 @@
       display: flex;
       width: 100%;
     }
+    .img-book{
+      padding-top: 15px;
+    }
+    .img-book img{
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-  <header>
-  <h1>Đặt Bàn Nhà Hàng KASEUN</h1>
-</header>
-  <form>
-    <nav>
+<form>
+  <nav>
+    <img th:src="@{/image/logo.jpg}" alt="logo">
+    <div>
       <a href="/home">Trang Chủ</a>
       <a href="/menu">Thực Đơn</a>
       <a href="/book/addTable">Đặt Bàn</a>
       <a href="/information">Liên Hệ</a>
-    </nav>
-  </form>
+    </div>
+  </nav>
+</form>
+  <div class="img-book">
+    <img src="https://chumrestaurant.com/wp-content/uploads/2021/11/photo-banner-03-1400x474.jpg" alt="img-1">
+  </div>
   <div class="table">
     <div class="reservation-form">
       <h2>Đặt Bàn</h2>
@@ -126,7 +134,7 @@
     <div class="reservation-form">
       <h2>Đặt bàn qua điện thoại</h2>
       <p>
-        <img src="https://chumrestaurant.com/wp-content/uploads/2021/11/photo-hotline-02.png">
+        <img src="https://chumrestaurant.com/wp-content/uploads/2021/11/photo-hotline-02.png" alt="img-2">
       </p>
       <p> * Bàn ghế của chúng tôi có thể chứa đến 20 khách. Vui lòng cân nhắc khi lên kế hoạch trước cho nhóm.</p>
       <p> * Đối với việc đặt chỗ hơn 20 khách, vui lòng liên hệ với chúng tôi. Chúng tôi sẽ tư vấn về kế hoạch của bạn.</p>

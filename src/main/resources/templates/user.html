@@ -81,14 +81,20 @@
         border-radius: 2px;
         color: #f0f0f0;
     }
+
     .edit-e a{
         text-decoration: none;
+        border: 1px solid #333333;
+        padding: 3px;
+        border-radius: 3px;
+        color: #333333;
     }
   </style>
 </head>
 <body>
 <header>
-  <h1>Quản Lý Nhân Viên</h1>
+    <h1>Quản Lý Nhà Hàng</h1>
+    <h3>Quản Lý Nhân Viên</h3>
 </header>
 <nav>
     <a href="/admin">Trang Chủ</a>
@@ -123,8 +129,7 @@
           <td th:text="${user.phone}"></td>
           <td th:text="${user.address}"></td>
           <td class="edit-e">
-            <a th:href="@{/user/update/{id}(id=${user.id})}">Sửa</a>
-              <a th:href="@{/user/delete/{id}(id=${user.id})}">Xóa</a>
+            <a th:href="@{/user/update/{id}(id=${user.id})}">Sửa</a> <a th:href="@{/user/delete/{id}(id=${user.id})}">Xóa</a>
           </td>
         </tr>
       </tbody>

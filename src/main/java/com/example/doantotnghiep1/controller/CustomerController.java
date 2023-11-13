@@ -1,6 +1,8 @@
 package com.example.doantotnghiep1.controller;
 
+import com.example.doantotnghiep1.entity.Book;
 import com.example.doantotnghiep1.entity.Customer;
+import com.example.doantotnghiep1.service.BookService;
 import com.example.doantotnghiep1.service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,11 @@ import java.util.stream.Collectors;
 public class CustomerController {
     private final CustomerService customerService;
 
-    public CustomerController(CustomerService customerService) {
+    private final BookService bookService;
+
+    public CustomerController(CustomerService customerService, BookService bookService) {
         this.customerService = customerService;
+        this.bookService = bookService;
     }
 
     @GetMapping("/add")
@@ -89,5 +94,19 @@ public class CustomerController {
         model.addAttribute("startDate", startDate);
         model.addAttribute("endDate", endDate);
         return "RevenueStatistics";
+    }
+
+    @GetMapping("/addOL/{id}")
+    public String addOL(Model model, @PathVariable String id){
+        Customer customer = customerService.getById(id);
+        model.addAttribute("addOL", customer);
+        return "addCustomerOL";
+    }
+    @PostMapping("/addOL/{id}")
+    public String addOL(@ModelAttribute("addOL") Customer customer, @PathVariable String id){
+        customer.
+                numberTable(customer.getNumberTable());
+        customerService.add(customer);
+        return "redirect:/customer/getKH";
     }
 }

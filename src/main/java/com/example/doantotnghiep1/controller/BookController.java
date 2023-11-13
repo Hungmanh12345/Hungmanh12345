@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 @RequestMapping("/book")
 public class BookController {
@@ -18,7 +21,9 @@ public class BookController {
     @GetMapping("/addTable")
     public String add(Model model){
         Book book = new Book();
+        boolean isNewOrder = true;
         model.addAttribute("bookTable", book);
+        model.addAttribute("isNewOrder", isNewOrder);
         return "BookTable";
     }
 
@@ -61,5 +66,23 @@ public class BookController {
         return "redirect:/book/getBook";
     }
 
+    @GetMapping("/list_book_customer")
+    public String ListBookCustomer(Model model){
+        model.addAttribute("show", bookService.getBook());
+        return "listBookCustomer";
+    }
+   @PostMapping("/bookId/{id}")
+    public String bookById(@PathVariable String id, Model model) {
+        Book book = bookService.getBookById(id);
+        model.addAttribute("book", book);
 
+        return "redirect:/table";
+    }
+
+    @GetMapping("/table/{id}")
+    public String bookId(@PathVariable String id, Model model){
+        Book book = bookService.getBookById(id);
+        model.addAttribute("book", book);
+        return "table";
+    }
 }
