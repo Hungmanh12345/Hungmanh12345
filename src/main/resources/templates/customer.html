@@ -72,7 +72,6 @@
       padding: 5px 10px;
       margin: 5px;
     }
-
     .addUse-g{
       border: 1px solid #333333;
       background-color: #f0f0f0;
@@ -122,7 +121,7 @@
           <td th:text="${customer.phoneNumber}"></td>
           <td th:text="${customer.numberTable}"></td>
           <td th:text="${customer.action}"></td>
-          <td class="bill" >
+          <td class="bill">
             <form class="addUse-g" th:if="${customer.action eq 'Chưa thanh toán'}">
               <a th:href="@{/customer/payment/{id}(id=${customer.id})}">Thanh toán</a>
             </form>

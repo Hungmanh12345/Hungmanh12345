@@ -1,21 +1,29 @@
 package com.example.doantotnghiep1.controller;
 
 import com.example.doantotnghiep1.entity.Book;
+import com.example.doantotnghiep1.entity.CustomerOL;
+import com.example.doantotnghiep1.entity.Table;
 import com.example.doantotnghiep1.service.BookService;
+import com.example.doantotnghiep1.service.CustomerOLService;
+import com.example.doantotnghiep1.service.TableService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Controller
 @RequestMapping("/book")
 public class BookController {
     private final BookService bookService;
 
-    public BookController(BookService bookService) {
+    private final TableService tableService;
+
+    private final CustomerOLService customerOLService;
+
+
+    public BookController(BookService bookService, TableService tableService, CustomerOLService customerOLService) {
         this.bookService = bookService;
+        this.tableService = tableService;
+        this.customerOLService = customerOLService;
     }
 
     @GetMapping("/addTable")
@@ -70,19 +78,5 @@ public class BookController {
     public String ListBookCustomer(Model model){
         model.addAttribute("show", bookService.getBook());
         return "listBookCustomer";
-    }
-   @PostMapping("/bookId/{id}")
-    public String bookById(@PathVariable String id, Model model) {
-        Book book = bookService.getBookById(id);
-        model.addAttribute("book", book);
-
-        return "redirect:/table";
-    }
-
-    @GetMapping("/table/{id}")
-    public String bookId(@PathVariable String id, Model model){
-        Book book = bookService.getBookById(id);
-        model.addAttribute("book", book);
-        return "table";
     }
 }

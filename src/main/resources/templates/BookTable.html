@@ -12,10 +12,30 @@
     }
 
     .reservation-form {
-      background-color: #fffae7;
+      background-image: url(https://chumrestaurant.com/wp-content/uploads/2022/04/bbbc.png);
+      background-size: cover;
       padding: 20px;
       border-radius: 5px;
-      width: 800px;
+      width: 100%;
+      height: 600px;
+      display: flex;
+    }
+
+    .reservation-form-table{
+      padding-left: 200px;
+      width: 30%;
+    }
+
+    .reservation-form-table h2{
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .reservation-form-in4{
+      width: 40%;
+      padding-left: 50px;
+    }
+    .reservation-form-in4 h2{
+      text-transform: uppercase;
     }
 
     .form-group {
@@ -102,48 +122,50 @@
   </div>
   <div class="table">
     <div class="reservation-form">
-      <h2>Đặt Bàn</h2>
-      <form th:action="@{/book/add}" th:object="${bookTable}" method="post">
-        <div class="form-group">
-          <label for="name">Họ và Tên:</label>
-          <input th:field="*{bookName}" type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="name">Số điện thoại:</label>
-          <input th:field="*{phone}" type="text" id="phone" name="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="date">Ngày:</label>
-          <input th:field="*{date}" type="date" id="date" name="date" required>
-        </div>
-        <div class="form-group">
-          <label for="time">Thời gian:</label>
-          <input th:field="*{time}" type="time" id="time" name="time" required>
-        </div>
-        <div class="form-group">
-          <label for="quantity">Số lượng khách:</label>
-          <input th:field="*{quantity}" type="text" id="quantity" name="quantity" required>
-        </div>
-        <div class="form-group">
-          <label for="information">Thông tin thêm:</label>
-          <textarea class="form-info" th:field="*{information}" type="text" id="information" name="information"></textarea>
-        </div>
-        <input type="submit" value="Đặt Bàn">
-      </form>
-    </div>
-    <div class="reservation-form">
-      <h2>Đặt bàn qua điện thoại</h2>
-      <p>
-        <img src="https://chumrestaurant.com/wp-content/uploads/2021/11/photo-hotline-02.png" alt="img-2">
-      </p>
-      <p> * Bàn ghế của chúng tôi có thể chứa đến 20 khách. Vui lòng cân nhắc khi lên kế hoạch trước cho nhóm.</p>
-      <p> * Đối với việc đặt chỗ hơn 20 khách, vui lòng liên hệ với chúng tôi. Chúng tôi sẽ tư vấn về kế hoạch của bạn.</p>
-      <h3>Nhà hàng KASEUN</h3>
-      <p>Địa chỉ: 84 Triều Khúc, Thanh Xuân, Hà Nội</p>
-      <p>Điện thoại: 0913566383</p>
-      <h4>Giờ mở cửa:</h4>
-      <p>11h30 AM - 14h00 PM</p>
-      <p>17h30 PM - 22h00 PM</p>
+      <div class="reservation-form-table">
+        <h2>Đặt Bàn Online</h2>
+        <form th:action="@{/book/add}" th:object="${bookTable}" method="post">
+          <div class="form-group">
+            <label for="name">Họ và Tên:</label>
+            <input th:field="*{bookName}" type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Số điện thoại:</label>
+            <input th:field="*{phone}" type="text" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="date">Ngày:</label>
+            <input th:field="*{date}" type="date" id="date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="time">Thời gian:</label>
+            <input th:field="*{time}" type="time" id="time" name="time" required>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Số lượng khách:</label>
+            <input th:field="*{quantity}" type="text" id="quantity" name="quantity" required>
+          </div>
+          <div class="form-group">
+            <label for="information">Thông tin thêm:</label>
+            <textarea class="form-info" th:field="*{information}" type="text" id="information" name="information"></textarea>
+          </div>
+          <input type="submit" value="Đặt Bàn">
+        </form>
+      </div>
+      <div class="reservation-form-in4">
+        <h2>Đặt bàn qua điện thoại</h2>
+        <p>
+          <img src="https://chumrestaurant.com/wp-content/uploads/2021/11/photo-hotline-02.png" alt="img-2">
+        </p>
+        <p> * Bàn ghế của chúng tôi có thể chứa đến 20 khách. Vui lòng cân nhắc khi lên kế hoạch trước cho nhóm.</p>
+        <p> * Đối với việc đặt chỗ hơn 20 khách, vui lòng liên hệ với chúng tôi. Chúng tôi sẽ tư vấn về kế hoạch của bạn.</p>
+        <h3>Nhà hàng KASEUN</h3>
+        <p>Địa chỉ: 84 Triều Khúc, Thanh Xuân, Hà Nội</p>
+        <p>Điện thoại: 0913566383</p>
+        <h4>Giờ mở cửa:</h4>
+        <p>11h30 AM - 14h00 PM</p>
+        <p>17h30 PM - 22h00 PM</p>
+      </div>
     </div>
   </div>
   <footer>

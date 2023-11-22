@@ -23,16 +23,6 @@ public class TableController {
         this.tableService = tableService;
         this.customerService = customerService;
     }
-    @PostMapping("/add")
-    public ResponseEntity<Table> add(@RequestBody Table table){
-        Table result = tableService.add(table);
-        return ResponseEntity.ok().body(result);
-    }
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Table> update(@RequestBody Table table , @PathVariable String id){
-        Table result = tableService.update(id, table);
-        return ResponseEntity.ok().body(result);
-    }
 
     @GetMapping("/getTable")
     public String getBook( Model model){
@@ -41,6 +31,8 @@ public class TableController {
         model.addAttribute("table", tables);
         return "table";
     }
+
+
     @PostMapping("/used/{id}")
     public String useTabled(@PathVariable String id) {
         Table table = tableService.getTableById(id);
@@ -65,13 +57,6 @@ public class TableController {
     public String useTable(@PathVariable String id) {
         Table table = tableService.getTableById(id);
         table.setAction("occupied");
-        tableService.add(table);
-        return "redirect:/customer/add";
-    }
-    @PostMapping("/booked/{id}")
-    public String bookedTable(@PathVariable String id) {
-        Table table = tableService.getTableById(id);
-        table.setAction("booked");
         tableService.add(table);
         return "redirect:/customer/add";
     }

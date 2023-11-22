@@ -16,4 +16,5 @@ public interface TableService {
     Table getTableById(String id);
 
     Table getTableByCode(String numberTable);
+
 }

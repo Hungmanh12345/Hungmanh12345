@@ -72,9 +72,6 @@
       padding: 5px 10px;
       margin: 5px;
     }
-    .bill{
-
-    }
 
     .addUse-g{
       border: 1px solid #333333;
@@ -82,10 +79,12 @@
       border-radius: 5px;
       width: 80px;
       padding: 2px;
+      margin: 3px;
     }
-    .addUse-g a{
-      text-decoration: none;
+    .addUse-g button{
+      border: none;
       color: #333333;
+      cursor: pointer;
     }
     .back{
       padding-top: 20px;
@@ -102,6 +101,7 @@
     .tt{
       display: flex;
       align-items: flex-end;
+      justify-content: center;
     }
   </style>
 </head>
@@ -143,11 +143,11 @@
         <td th:text="${getBook.quantity}"></td>
         <td th:text="${getBook.information}"></td>
         <td class="tt">
-          <form class="addUse-g"}>
-            <a th:href="@{/book/bookId/{id}(id=${getBook.id})}">Đặt bàn</a>
+          <form class="addUse-g"} th:action="@{/book/bookTable}" method="post">
+            <button type="submit">Đặt bàn</button>
           </form>
           <form class="addUse-g"}>
-            <a href="@{/customer/payment/{id}(id=${customer.id})}">Hủy đặt</a>
+            <button type="submit">Hủy đặt</button>
           </form>
         </td>
       </tr>

@@ -18,6 +18,15 @@ public class CustomerServiceImpl implements CustomerService{
     public Customer add(Customer customer){
         return customerRepository.save(customer);
     }
+    @Override
+    public Customer update(String id, Customer customer){
+        Customer existCustomer = customerRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Không tìm thấy")
+        );
+        existCustomer
+                .numberTable(customer.getNumberTable());
+        return customerRepository.save(existCustomer);
+    }
 
     @Override
     public List<Customer> getKH(){

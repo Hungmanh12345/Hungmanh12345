@@ -8,6 +8,8 @@ public interface CustomerService {
 
     Customer add(Customer customer);
 
+    Customer update(String id, Customer customer);
+
     List<Customer> getKH();
 
     Customer getById(String id);
