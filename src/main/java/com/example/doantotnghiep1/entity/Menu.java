@@ -71,4 +71,5 @@ public class Menu extends BaseEntity implements Serializable {
         this.name = name;
         return this;
     }
+
 }

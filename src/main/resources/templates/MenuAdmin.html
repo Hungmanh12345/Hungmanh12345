@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thực Đơn Nhà Hàng KASEUN</title>
+  <link rel="stylesheet" href="styles.css">
+  <title>Quản lý Menu Nhà hàng</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-image: url("https://media.istockphoto.com/id/500643854/vi/vec-to/th%E1%BB%B1c-%C4%91%C6%A1n-th%E1%BB%B1c-ph%E1%BA%A9m-nh%C3%A0-h%C3%A0ng-thi%E1%BA%BFt-k%E1%BA%BF-c%E1%BB%95-%C4%91i%E1%BB%83n-v%E1%BB%9Bi-chalkboard-background-v.jpg?s=1024x1024&w=is&k=20&c=DU52ffNaLdCl6yOAll_pNW1WQqucFcV0-_wPxScT8LM=");
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
     }
@@ -17,10 +17,6 @@
       color: #fff;
       text-align: center;
       padding: 10px;
-    }
-
-    h1 {
-      margin: 0;
     }
 
     nav {
@@ -33,62 +29,87 @@
       color: #fff;
       margin: 10px;
     }
-    .menu{
-      padding: 10px 20px;
 
+    .container{
+      background-color: #fff9e8;
     }
-    .menu-List{
-      display: flex;
-      background-color: #444;
+
+    .menu-section {
+      display: grid;
+      gap: 20px;
       padding: 20px;
-      list-style: none;
-      justify-content: center;
-      font-size: 20px;
+      width: calc(25% - 20px);
+      border-radius: 10px;
     }
-    .menu-List-item{
-      margin: 0 50px;
+
+    .menu-item {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       text-align: center;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      height: 350px;
     }
-    .menu-List-item a {
-      text-decoration: none;
-      color: #f0f0f0;
+
+    .menu-item h3 {
+      color: #333;
     }
-    footer {
-      background-color: #333;
+
+    .menu-item p {
+      color: #777;
+    }
+
+    .menu{
+      max-width: 1000px;
+      padding-left: 250px;
+      padding-bottom: 10px;
+    }
+
+    .menu-1{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+    }
+    .oder{
+      background-color: #39b54a;
       color: #fff;
-      text-align: center;
-      padding: 10px;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-<header class="header-nav">
+<header>
   <h1>Quản Lý Nhà Hàng</h1>
-  <h3>Thực Đơn Nhà Hàng KASEUN</h3>
+  <h3>Thực đơn</h3>
 </header>
-<form>
-  <nav>
-    <a href="/admin">Trang Chủ</a>
-    <a href="/tables/getTable">Sơ Đồ</a>
-    <a href="/menuAd">Thực Đơn</a>
-    <a href="/user/users">Nhân Viên</a>
-    <a href="/customer/getKH">Khách Hàng</a>
-    <a href="/book/getBook">Xác Nhận Đơn</a>
-    <a href="/RevenueStatistics">Thống kê doanh thu</a>
-  </nav>
-</form>
-<form class="menu" method="get" th:each="menu : ${menu}">
-  <div>
-    <ul class="menu-List">
-      <li class="menu-List-item" ><a th:href="${menu.type}">Đồ ăn</a></li>
-      <li class="menu-List-item"><a th:href="@{menu.type}">Đồ uống</a></li>
-      <li class="menu-List-item"><a th:href="@{menu.type}">Khác</a></li>
-    </ul>
+<nav>
+  <a href="/admin">Trang Chủ</a>
+  <a href="/tables/getTable">Sơ Đồ</a>
+  <a href="/menu/getAd">Thực Đơn</a>
+  <a href="/user/users">Nhân Viên</a>
+  <a href="/customer/getKH">Khách Hàng</a>
+  <a href="/book/getBook">Xác Nhận Đơn</a>
+  <a href="/RevenueStatistics">Thống kê doanh thu</a>
+</nav>
+<div class="container">
+  <div class="menu">
+    <div class="menu-1">
+      <div th:each="menu : ${menuAd}" class="menu-section">
+        <div class="menu-item">
+          <img th:src="@{${menu.images}}" alt="Product Image" width="100%" height="200"/>
+          <h3 th:text="${menu.name}"></h3>
+          <p th:text="${menu.price}"></p>
+          <a th:href="@{/menu/update/{id}(id=${menu.id})}" class="oder">Sửa</a> <a th:href="@{/menu/delete/{id}(id=${menu.id})}" class="oder">Xóa</a>
+        </div>
+      </div>
+    </div>
+    <a href="/menu/add" class="oder">Thêm Món Ăn</a>
   </div>
-</form>
-
+</div>
 </body>
-<footer>
-  <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
-</footer>
 </html>

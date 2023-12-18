@@ -80,43 +80,41 @@
   </style>
 </head>
 <body>
-<form>
-  <nav>
+<nav>
     <img th:src="@{/image/logo.jpg}" alt="logo">
     <div>
       <a href="/home">Trang Chủ</a>
-      <a href="/menu">Thực Đơn</a>
+      <a href="/menu/getAll">Thực Đơn</a>
       <a href="/book/addTable">Đặt Bàn</a>
-      <a href="/information">Liên Hệ</a>
+      <a href="/feedback/information">Phản Hồi</a>
     </div>
-  </nav>
-</form>
+</nav>
 <div class="contact-info">
   <h2>Thông Tin Liên Hệ</h2>
   <p>Địa chỉ: 84 Triều Khúc, Thanh Xuân, Hà Nội</p>
   <p>Điện thoại: 0913566383</p>
-  <p>Email: restaurantKaseun@nhahangabc.com</p>
+  <p>Email: restaurantKaseun@gmail.com</p>
 </div>
 <div class="contact-form">
-  <h2>Gửi Tin Nhắn</h2>
-  <form action="process_contact.php" method="post">
+  <h2>Phản hồi</h2>
+  <form th:action="@{/feedback/add}" th:object="${feedback}" th:method="post">
     <div class="form-group">
       <label for="name">Họ và Tên:</label>
-      <input type="text" id="name" name="name" required>
+      <input th:field="*{name}" type="text" id="name" name="name" required>
     </div>
     <div class="form-group">
-      <label for="email">Số điện thoại:</label>
-      <input type="email" id="email" name="email" required>
+      <label for="phone">Số điện thoại:</label>
+      <input th:field="*{phone}" type="text" id="phone" name="phone" required>
     </div>
     <div class="form-group">
       <label for="message">Nội dung:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
+      <textarea th:field="*{content}" id="message" name="message" rows="4" required></textarea>
     </div>
     <input type="submit" value="Gửi">
   </form>
 </div>
-</body>
 <footer>
   <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
 </footer>
+</body>
 </html>

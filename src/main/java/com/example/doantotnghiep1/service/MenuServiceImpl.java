@@ -56,7 +56,7 @@ public class MenuServiceImpl implements MenuService{
     }
 
     @Override
-    public List<Menu> getByName(String name){
-        return menuRepository.findByName(name);
+    public Menu getById(String id){
+        return menuRepository.findById(id).get();
     }
 }

@@ -15,5 +15,6 @@ public interface MenuService {
 
     List<Menu> getByType(String type);
 
-    List<Menu> getByName(String name);
+
+    Menu getById(String id);
 }

@@ -79,4 +79,12 @@ public class BookController {
         model.addAttribute("show", bookService.getBook());
         return "listBookCustomer";
     }
+
+    @PostMapping("/deleteC/{id}")
+    public String deleteC(@PathVariable String id) {
+        Book book = bookService.getBookById(id);
+        book.setAction("Đã Hủy");
+        bookService.save(book);
+        return "redirect:/book/list_book_customer";
+    }
 }

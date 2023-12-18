@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản Lý Thực Đơn</title>
+  <title>Thực đơn</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-image: url("https://media.istockphoto.com/id/500643854/vi/vec-to/th%E1%BB%B1c-%C4%91%C6%A1n-th%E1%BB%B1c-ph%E1%BA%A9m-nh%C3%A0-h%C3%A0ng-thi%E1%BA%BFt-k%E1%BA%BF-c%E1%BB%95-%C4%91i%E1%BB%83n-v%E1%BB%9Bi-chalkboard-background-v.jpg?s=1024x1024&w=is&k=20&c=DU52ffNaLdCl6yOAll_pNW1WQqucFcV0-_wPxScT8LM=");
+      font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f9f5e8; /* Màu nền chung */
+      color: #333;
     }
 
-    header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-    }
-
-    h1 {
-      margin: 0;
-    }
     nav {
       background-color: #64a956;
       text-align: center;
@@ -29,11 +20,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    nav img{
-      width: 90px;
-      height: 90px;
+      position: fixed;
+      width: 100%;
+      border-bottom: 1px solid #333333;
     }
 
     nav a {
@@ -42,85 +31,128 @@
       color: #fff;
       margin: 20px;
     }
+
+    nav img{
+      width: 90px;
+      height: 90px;
+    }
+
+    .menu-section {
+      display: grid;
+      gap: 20px;
+      padding: 20px;
+      width: calc(25% - 20px);
+      border-radius: 10px;
+    }
+
+    .menu-item {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      height: 350px;
+    }
+
+    .menu-item h3 {
+      color: #333;
+    }
+
+    .menu-item p {
+      color: #777;
+    }
+
+    .menu{
+      max-width: 1000px;
+      padding-left: 250px;
+    }
+
+    .menu-1{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+    }
+
+    .nav-1{
+      background-color: #64a956;
+      color: #ecf0f1;
+      text-align: center;
+      padding-top: 100px;
+      padding-bottom: 10px;
+    }
+
+    .nav-1 a{
+      color: #ecf0f1;
+      text-decoration: none;
+      margin: 0 1em;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .nav-1 a:hover{
+      color: #d35400; /* Màu cam */
+    }
+    .oder{
+      background-color: #39b54a;
+      color: #fff;
+      border: none;
+      padding: 10px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
     footer {
       background-color: #333;
       color: #fff;
       text-align: center;
       padding: 10px;
     }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .restaurant-layout {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .menu{
-      display: grid;
-      text-align: center;
-      justify-content: center;
-      width: calc(33.33% - 20px);
-      background-color: #f0f0f0;
-    }
-
-    .menu p{
-      margin: 10px;
-    }
-
-    .menu-type {
-      background-color: #F0F0F0;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #DDD;
-    }
-
   </style>
 </head>
 <body>
 <form>
   <nav>
     <img th:src="@{/image/logo.jpg}" alt="logo">
-    <div>
+    <div class="header">
       <a href="/home">Trang Chủ</a>
-      <a href="/menu">Thực Đơn</a>
+      <a href="/menu/getAll">Thực Đơn</a>
       <a href="/book/addTable">Đặt Bàn</a>
-      <a href="/information">Liên Hệ</a>
+      <a href="/feedback/information">Phản Hồi</a>
     </div>
   </nav>
 </form>
-<div class="container">
-  <div class="restaurant-layout">
-    <div th:each="type : ${distinctTypes}">
-      <h2 th:text="${type}"></h2>
-      <div class="menu-type">
-        <div th:each="menu : ${menu}">
-          <div th:if="${menu.type == type}" class="menu">
-            <div>
-              <img th:src="${menu.images}">
-            </div>
-            <div>
-              <p th:text="${menu.name}"></p>
-            </div>
-            <div>
-              <p th:text="${menu.price}"></p>
-            </div>
-          </div>
-        </div>
+<div class="nav-1">
+  <a th:href="@{/menu/getAll}" th:onclick="'javascript:showMenu(\'' + 'drink' + '\');'">Đồ Uống</a>
+  <a th:href="@{/menu/getFood}" th:onclick="'javascript:showMenu(\'' + 'food' + '\');'">Đồ Ăn</a>
+  <a th:href="@{/menu/getOther}" th:onclick="'javascript:showMenu(\'' + 'other' + '\');'">Khác</a>
+</div>
+<div class="menu">
+  <div class="menu-1">
+    <div th:each="menu : ${menu}" class="menu-section">
+      <div class="menu-item">
+        <img th:src="@{${menu.images}}" alt="Product Image" width="100%" height="200"/>
+        <h3 th:text="${menu.name}"></h3>
+        <p th:text="${menu.price}"></p>
+        <a class="oder">Đặt món</a>
       </div>
     </div>
   </div>
-  </div>
 </div>
-</body>
 <footer>
   <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
 </footer>
+<script>
+  function showMenu(sectionId) {
+    // Ẩn tất cả các menu section
+    const menuSections = document.querySelectorAll('.menu-section');
+    menuSections.forEach(function(section) {
+      section.style.display = 'none';
+    });
+
+    // Hiển thị menu section tương ứng
+    const selectedSection = document.getElementById(sectionId + '-menu');
+    selectedSection.style.display = 'grid';
+  }
+</script>
+</body>
 </html>

@@ -84,6 +84,18 @@
       text-decoration: none;
       color: #333333;
     }
+    .list-feedback{
+      padding-top: 20px;
+    }
+    .list-feedback a{
+      color: #333333;
+      background-color: #F0F0F0;
+      text-decoration: none;
+      font-size: 15px;
+      border-radius: 5px;
+      border: 1px solid #333333;
+      padding: 5px;
+    }
   </style>
 </head>
 <body>
@@ -94,7 +106,7 @@
 <nav>
   <a href="/admin">Trang Chủ</a>
   <a href="/tables/getTable">Sơ Đồ</a>
-  <a href="/menuAd">Thực Đơn</a>
+  <a href="/menu/getAd">Thực Đơn</a>
   <a href="/user/users">Nhân Viên</a>
   <a href="/customer/getKH">Khách Hàng</a>
   <a href="/book/getBook">Xác Nhận Đơn</a>
@@ -132,6 +144,9 @@
         </tr>
       </tbody>
     </table>
+    <div class="list-feedback">
+      <a th:href="@{/feedback/get_feedback}">Phản hồi</a>
+    </div>
   </div>
 </div>
 </body>

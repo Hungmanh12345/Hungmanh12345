@@ -29,6 +29,19 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public String deleteCustomer(String id){
+        Customer customer = customerRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Không tìm thấy")
+        );
+        customerRepository.save(delete(customer));
+        return "đã xóa: " + id;
+    }
+
+    public Customer delete(Customer customer) {
+        customer.setIsDeleted(1L);
+        return customer;
+    }
+    @Override
     public List<Customer> getKH(){
         return customerRepository.findAll();
     }

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Management Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1em 0;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 200px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    .back{
+      padding-top: 20px;
+    }
+    .back a{
+      color: #333333;
+      background-color: #F0F0F0;
+      text-decoration: none;
+      font-size: 15px;
+      border-radius: 5px;
+      border: 1px solid #333333;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Phản hồi từ khách hàng</h1>
+</header>
+<section>
+  <table>
+    <thead>
+    <tr>
+      <th>STT</th>
+      <th>Tên Khách Hàng</th>
+      <th>Số điện thoại</th>
+      <th>Ngày phản hồi</th>
+      <th>Nội Dung</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="feedback, stat : ${feedback}">
+      <td th:text="${stat.index + 1}"></td>
+      <td th:text="${feedback.name}"></td>
+      <td th:text="${feedback.phone}"></td>
+      <td th:text="${#dates.format(feedback.createdDate, 'dd-MM-yyyy')}"></td>
+      <td th:text="${feedback.content}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="back">
+    <a th:href="@{/customer/getKH}">Quay lại</a>
+  </div>
+</section>
+</body>
+</html>

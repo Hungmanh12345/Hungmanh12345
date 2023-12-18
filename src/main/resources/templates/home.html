@@ -19,6 +19,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: fixed;
+            width: 100%;
         }
 
         nav a {
@@ -35,6 +37,7 @@
 
         .container {
             margin: 0 auto;
+            padding-top: 90px;
         }
 
         .content {
@@ -127,19 +130,6 @@
             cursor: pointer;
         }
 
-        .search-button {
-            background-color: #64a956;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        /* Ẩn ô nhập ban đầu */
-        .search-input {
-            display: none;
-        }
-
     </style>
 </head>
 <body>
@@ -148,15 +138,9 @@
         <img th:src="@{/image/logo.jpg}" alt="logo">
         <div class="header">
             <a href="/home">Trang Chủ</a>
-            <a href="/menu">Thực Đơn</a>
+            <a href="/menu/getAll">Thực Đơn</a>
             <a href="/book/addTable">Đặt Bàn</a>
-            <a href="/information">Liên Hệ</a>
-            <form action="/search" method="get">
-                <button type="button" class="search-button" id="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
-                <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input" id="search-input">
-            </form>
+            <a href="/feedback/information">Phản Hồi</a>
         </div>
     </nav>
 </form>
@@ -218,32 +202,5 @@
 <footer>
     <p>&copy; 2023 Nhà Hàng KASEUN . Tất cả các quyền được bảo lưu.</p>
 </footer>
-
-
-
-
-
-
-<script>
-    // JavaScript để hiển thị ô nhập khi di chuột vào biểu tượng
-    const searchButton = document.getElementById("search-button");
-    const searchInput = document.getElementById("search-input");
-
-    searchButton.addEventListener("mouseover", function () {
-        searchInput.style.display = "block";
-    });
-
-    searchButton.addEventListener("mouseout", function () {
-        searchInput.style.display = "none";
-    });
-
-    searchInput.addEventListener("mouseover", function () {
-        searchInput.style.display = "block";
-    });
-
-    searchInput.addEventListener("mouseout", function () {
-        searchInput.style.display = "none";
-    });
-</script>
 </body>
 </html>

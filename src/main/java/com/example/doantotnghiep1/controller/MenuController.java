@@ -21,37 +21,67 @@ public class MenuController {
         this.menuService = menuService;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Menu> add(@RequestBody Menu menu){
-        Menu result = menuService.add(menu);
-        return ResponseEntity.ok().body(result);
-    }
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Menu> update(@RequestBody Menu menu , @PathVariable String id){
-        Menu result = menuService.update(id, menu);
-        return ResponseEntity.ok().body(result);
-    }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable String id){
-        String result = menuService.deleteMenu(id);
-        return ResponseEntity.ok().body(result);
+    @GetMapping("/add")
+    public String add(Model model){
+        Menu menu = new Menu();
+        model.addAttribute("addMenu", menu);
+        return "addFood";
     }
 
-    @GetMapping("/getByName/{type}")
-    public ResponseEntity<List<Menu>> getByType(@PathVariable String type){
-        List<Menu> result = menuService.getByType(type);
-        return ResponseEntity.ok().body(result);
+    @PostMapping("/add")
+    public String add(@ModelAttribute("addMenu") Menu menu){
+        menu
+                .type(menu.getType())
+                .name(menu.getName())
+                .images("/image/" + menu.getImages())
+                .price(menu.getPrice());
+        menuService.add(menu);
+                return "redirect:/menu/getAd";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateMenu(@PathVariable String id, Model model){
+        model.addAttribute("editMenu", menuService.getById(id));
+        return "editFood";
+    }
+
+   @PostMapping("/edit/{id}")
+   public String updateMenu(@PathVariable String id, @ModelAttribute("editMenu") Menu menu){
+        menuService.update(id, menu);
+        return "redirect:/menu/getAd";
+   }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable String id){
+        menuService.deleteMenu(id);
+        return "redirect:/menu/getAd";
+    }
+
+    @GetMapping("/getAd")
+    public String getMenuAd(Model model){
+        List<Menu> menuAD = menuService.getAll();
+        model.addAttribute("menuAd", menuAD );
+        return "MenuAdmin";
     }
 
     @GetMapping("/getAll")
-    public String getMenu(Model model){
-        List<Menu> menu = menuService.getAll();
-        Set<String> distinctTypes = menu.stream()
-                .map(Menu::getType)
-                .collect(Collectors.toSet());
-
-        model.addAttribute("distinctTypes", distinctTypes);
+    public String getMenu(Model model, String type){
+        List<Menu> menu = menuService.getByType("drink");
         model.addAttribute("menu", menu );
         return "menu";
+    }
+
+    @GetMapping("/getFood")
+    public String getMenuFood(Model model, String type){
+        List<Menu> menu = menuService.getByType("food");
+        model.addAttribute("menu", menu );
+        return "menufood";
+    }
+
+    @GetMapping("/getOther")
+    public String getMenuOther(Model model, String type){
+        List<Menu> menu = menuService.getByType("other");
+        model.addAttribute("menu", menu );
+        return "menuother";
     }
 }

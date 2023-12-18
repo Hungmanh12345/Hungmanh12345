@@ -74,6 +74,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: fixed;
+      width: 100%;
     }
 
     nav img{
@@ -98,7 +100,7 @@
       width: 100%;
     }
     .img-book{
-      padding-top: 15px;
+      padding-top: 105px;
     }
     .img-book img{
       width: 100%;
@@ -111,9 +113,9 @@
     <img th:src="@{/image/logo.jpg}" alt="logo">
     <div>
       <a href="/home">Trang Chủ</a>
-      <a href="/menu">Thực Đơn</a>
+      <a href="/menu/getAll">Thực Đơn</a>
       <a href="/book/addTable">Đặt Bàn</a>
-      <a href="/information">Liên Hệ</a>
+      <a href="/feedback/information">Phản Hồi</a>
     </div>
   </nav>
 </form>

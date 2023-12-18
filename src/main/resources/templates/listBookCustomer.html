@@ -81,18 +81,26 @@
       padding: 2px;
       margin: 3px;
     }
-    .addUse-g button{
-      border: none;
+    .addUse-g a{
       color: #333333;
       cursor: pointer;
+      text-decoration: none;
     }
+
+    .addUse-g button{
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
     .back{
       padding-top: 20px;
     }
+
     .back a{
       background-color: #F0F0F0;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 15px;
       border-radius: 5px;
       border: 1px solid #333333;
       padding: 5px;
@@ -143,10 +151,10 @@
         <td th:text="${getBook.quantity}"></td>
         <td th:text="${getBook.information}"></td>
         <td class="tt">
-          <form class="addUse-g"} th:action="@{/book/bookTable}" method="post">
-            <button type="submit">Đặt bàn</button>
+          <form class="addUse-g" >
+            <a href="/customer/add">Đặt bàn</a>
           </form>
-          <form class="addUse-g"}>
+          <form th:action="@{/book/deleteC/{id}(id=${getBook.id})}" class="addUse-g" method="post">
             <button type="submit">Hủy đặt</button>
           </form>
         </td>

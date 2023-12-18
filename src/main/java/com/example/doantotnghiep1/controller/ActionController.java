@@ -54,10 +54,6 @@ public class ActionController {
         return "MenuAdmin";
     }
 
-    @GetMapping("/information")
-    public String information() {
-        return "information";
-    }
 
     @GetMapping("/RevenueStatistics")
     public String revenue(){
