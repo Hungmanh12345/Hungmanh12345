@@ -151,8 +151,8 @@
         <td th:text="${getBook.quantity}"></td>
         <td th:text="${getBook.information}"></td>
         <td class="tt">
-          <form class="addUse-g" >
-            <a href="/customer/add">Đặt bàn</a>
+          <form class="addUse-g" th:action="@{/book/oderTable/{id}(id=${getBook.id})}" method="post">
+            <button type="submit">Đặt bàn</button>
           </form>
           <form th:action="@{/book/deleteC/{id}(id=${getBook.id})}" class="addUse-g" method="post">
             <button type="submit">Hủy đặt</button>

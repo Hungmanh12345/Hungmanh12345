@@ -87,4 +87,12 @@ public class BookController {
         bookService.save(book);
         return "redirect:/book/list_book_customer";
     }
+
+    @PostMapping("/oderTable/{id}")
+    public String oderTable(@PathVariable String id) {
+        Book book = bookService.getBookById(id);
+        book.setAction("Đã đặt");
+        bookService.save(book);
+        return "redirect:/tables/getTable";
+    }
 }
